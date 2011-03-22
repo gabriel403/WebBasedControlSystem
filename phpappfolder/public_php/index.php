@@ -3,6 +3,9 @@
 // Define path to root directory
 defined('ROOT_PATH')
         || define('ROOT_PATH', realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..'));
+        
+defined('ROOT_URL')
+        || define('ROOT_URL', 'p07224405/'));
 
 // Define path to application directory
 defined('APP_PATH')
