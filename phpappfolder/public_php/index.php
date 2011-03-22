@@ -2,8 +2,11 @@
 
 // Define path to root directory
 defined('ROOT_PATH')
-        || define('ROOT_PATH', realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR
+        || define('ROOT_PATH', realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..'));
         
+defined('ROOT_URI')
+        || define('ROOT_URI', 'p07224405/'));
+
 // Define path to application directory
 defined('APP_PATH')
         || define('APP_PATH', realpath(ROOT_PATH . DIRECTORY_SEPARATOR . 'apps'));
