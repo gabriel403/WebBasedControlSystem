@@ -1,0 +1,21 @@
+/* 
+    Document   : layout
+    Created on : Apr 1, 2011, 11:09:58 PM
+    Author     : gabriel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.bottomText {
+    position: absolute;
+    bottom: 50px;
+}
