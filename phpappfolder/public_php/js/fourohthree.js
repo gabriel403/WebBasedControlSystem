@@ -5,7 +5,7 @@ var splitText = "";
 
 function onloadfunction()
 {
-    textArray = ["Welcome to CTEC 3609.", "Telematics and Web Based Control Systems."];
+    textArray = ["403 ERROR 403", "You do not have permission to access this website.", "Please register or login by using the links above."];
     splitText = textArray[0].split("");
     setTimeout("splitTextOutput(0,0)",1000);
 }
@@ -24,8 +24,7 @@ function splitTextOutput( splitPlace, textPlace )
     }
     else
     {
-        var href = window.location.href;
-        href = href.replace("index","");
-        window.location = href+"index/FourOhThree";
+        setTimeout("fade('topTitle')", 1000);
+        setTimeout("fade('topMenu')", 1000);
     }
 }

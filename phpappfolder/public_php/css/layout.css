@@ -19,3 +19,22 @@ body {
     position: absolute;
     bottom: 50px;
 }
+
+.transparent {
+    opacity: 0;
+    filter:alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+}
+
+.menuItem {
+    float: left;
+    padding-right: 20px;
+}
+
+#topTitle {
+}
+
+#topMenu {
+    float: right;
+}
