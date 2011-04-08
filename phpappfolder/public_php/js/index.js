@@ -3,29 +3,16 @@ window.onload = onloadfunction;
 var textArray = [];
 var splitText = "";
 
+
 function onloadfunction()
 {
     textArray = ["Welcome to CTEC 3609.", "Telematics and Web Based Control Systems."];
-    splitText = textArray[0].split("");
-    setTimeout("splitTextOutput(0,0)",1000);
+    daisyWheel(textArray, 0, 0, "bottomText", changepage);
 }
 
-function splitTextOutput( splitPlace, textPlace )
+function changepage( )
 {
-    document.getElementById("bottomText").innerHTML += splitText[splitPlace];
-    splitPlace++;
-    if ( splitPlace < splitText.length )
-        setTimeout("splitTextOutput("+splitPlace+", "+textPlace+")", 100);
-    else if ( ++textPlace < textArray.length )
-    {
-        splitText = textArray[textPlace].split("");
-        document.getElementById("bottomText").appendChild(document.createElement("br"));
-        setTimeout("splitTextOutput(0, "+textPlace+")", 1000);
-    }
-    else
-    {
-        var href = window.location.href;
-        href = href.replace("index","");
-        window.location = href+"index/FourOhThree";
-    }
+    var href = window.location.href;
+    href = href.replace("index","");
+    window.location = href+"FourOhThree";
 }
