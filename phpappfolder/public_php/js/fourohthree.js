@@ -15,3 +15,8 @@ function fadeinmenu(  )
     setTimeout("fade('topTitle')", 1000);
     setTimeout("fade('topMenu')", 1000);
 }
+
+function getRegForm()
+{
+    xhrPost({action: "registration"});
+}
