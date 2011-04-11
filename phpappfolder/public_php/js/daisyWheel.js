@@ -4,8 +4,9 @@ function daisyWheel( textArray, arrayPlace, stringPlace, domNode, callback )
     var tempText = textArray[arrayPlace].split("");
     if ( stringPlace < tempText.length )
     {
+        var delay = 2000/tempText.length;
         document.getElementById(domNode).innerHTML += tempText[stringPlace++];
-        setTimeout(function(){daisyWheel(textArray, arrayPlace, stringPlace, domNode, callback)}, 100);
+        setTimeout(function(){daisyWheel(textArray, arrayPlace, stringPlace, domNode, callback)}, delay);
     }
     else if ( ++arrayPlace < textArray.length )
     {

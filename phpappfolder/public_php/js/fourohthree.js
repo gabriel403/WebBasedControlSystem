@@ -9,14 +9,3 @@ function onloadfunction()
     daisyWheel(textArray, 0, 0, "bottomText", fadeinmenu);
 }
 
-function fadeinmenu(  )
-{
-
-    setTimeout("fade('topTitle')", 1000);
-    setTimeout("fade('topMenu')", 1000);
-}
-
-function getRegForm()
-{
-    xhrPost({action: "registration"});
-}

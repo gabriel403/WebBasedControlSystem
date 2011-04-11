@@ -22,32 +22,29 @@ function xhrPost(xhrargs)
     if ( !xhr )
         throw "No xhr available.";
 
-    var action;
+    var action = false;
     var data = [];
     if ( xhrargs === undefined )
         throw "xhrargs needs to be supplied.";
     
     if ( xhrargs.form !== undefined )
     {
-        if ( document.getElementById(xhrargs.form) )
-        {
-            if ( xhrargs.action === undefined )
-                if ( document.getElementById(xhrargs.form).action.length > 0 )
-                    action = document.getElementById(xhrargs.form).action.length;
-                else
-                    action = xhrargs.action;
-            var form = document.getElementById(xhrargs.form);
-            var inputs = form.getElementsByTagName("input");
-            for ( var key in inputs ){
-                if ( inputs[key].name )
-                    data.push(inputs.name + "=" + inputs.value);
-            }
-            data = data.join("&");
+        if ( isString(xhrargs.form) )
+            xhrargs.form = document.getElementById(xhrargs.form);
+        if ( xhrargs.form.getAttribute("action").length > 0 )
+            action = xhrargs.form.getAttribute("action");
+
+        console.log(xhrargs.form);
+        var inputs = xhrargs.form.getElementsByTagName("input");
+        for ( var key in inputs ){
+            if ( inputs[key].name )
+                data.push(inputs[key].name + "=" + inputs[key].value);
         }
+        data = data.join("&");
     }
-    else if ( xhrargs.action !== undefined )
+    if ( xhrargs.action !== undefined )
         action = xhrargs.action;
-    else
+    if ( !action )
         throw "No action supplied in xhrargs.";
     
     xhr.open("POST", action, true);
@@ -60,7 +57,6 @@ function xhrPost(xhrargs)
         if ( xhrargs.onerror !== undefined )
             xhrargs.onerror("Timeout was reached");
     }, 10000);
-    
     xhr.send(data);
     
     xhr.onreadystatechange = function()

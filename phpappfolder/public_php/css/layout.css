@@ -6,6 +6,11 @@
         Purpose of the stylesheet follows.
 */
 
+a:link {color: white; text-decoration: none; }
+a:active {color: white; text-decoration: none; }
+a:visited {color: white; text-decoration: none; }
+a:hover {color: white; text-decoration: underline; }
+
 root { 
     display: block;
 }
@@ -37,4 +42,38 @@ body {
 
 #topMenu {
     float: right;
+}
+
+.overlayInner {
+    position: relative;
+    background-color: white;
+    color: black;
+    padding: 0px 10px 10px 10px;
+}
+
+.closeParentDiv {
+    right: 0px;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background-image: url('/images/stop.gif');
+    background-repeat: no-repeat;
+}
+
+.formBar {
+    color: darkblue;
+    background-color: skyblue;
+    padding: 3px 5px 2px 5px;
+    border-bottom: 1px black solid;
+}
+
+.overlayOuter{
+    z-index: 1000;
+    width: 200px;
+    position: absolute;
+    background-color: white;
+    color: black;
+    right: 10px;
+    top: 50px;
 }
