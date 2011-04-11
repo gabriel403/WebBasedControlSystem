@@ -77,3 +77,16 @@ body {
     right: 10px;
     top: 50px;
 }
+
+.formError {
+    background-color: indianred;
+}
+
+.formSuccess {
+    background-color: greenyellow;
+}
+
+.msgDiv {
+    font-size: 70%;
+    font-family: "Courier New", Courier, monospace;
+}

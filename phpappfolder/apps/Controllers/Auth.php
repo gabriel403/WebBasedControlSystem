@@ -21,7 +21,7 @@ class Controllers_Auth extends Autonomic_Controller {
         $username = $_POST['username'];
         $password1 = $_POST['password1'];
         $password2 = $_POST['password2'];
-        echo Models_AuthModel::registerValidation($name, $email, $username, $password1, $password2);
+        echo json_encode(Models_AuthModel::registerValidation($name, $email, $username, $password1, $password2));
         exit;
     }
 

@@ -5,3 +5,7 @@ function isArray(obj) {
 function isString(obj) {
     return obj.constructor == String;
 }
+
+function isBool(obj) {
+    return obj.constructor == Boolean;
+}

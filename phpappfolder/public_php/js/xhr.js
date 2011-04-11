@@ -9,6 +9,7 @@
  *          name: value,
  *          name2: value2
  *      },
+ *      handleAs: json.
  *      onload: callbackfunc,
  *      onerror:callbackfunc
  * }
@@ -34,7 +35,6 @@ function xhrPost(xhrargs)
         if ( xhrargs.form.getAttribute("action").length > 0 )
             action = xhrargs.form.getAttribute("action");
 
-        console.log(xhrargs.form);
         var inputs = xhrargs.form.getElementsByTagName("input");
         for ( var key in inputs ){
             if ( inputs[key].name )
@@ -70,7 +70,12 @@ function xhrPost(xhrargs)
             return;
         }
         if ( xhrargs.onload !== undefined )
-            xhrargs.onload(xhr.responseText);
+        {
+            if ( xhrargs.handleAs && xhrargs.handleAs.search(/json/i) > -1)
+                xhrargs.onload(JSON.parse(xhr.responseText));
+            else
+                xhrargs.onload(xhr.responseText);
+        }
     };
 }
 

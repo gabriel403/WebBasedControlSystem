@@ -18,6 +18,10 @@ function showForm(data, idPrefix)
     innerdiv.setAttribute("class", "overlayInner");
     innerdiv.innerHTML = data;
     
+    var msgdiv = document.createElement("div");
+    msgdiv.setAttribute("id", idPrefix+"MsgDiv");
+    msgdiv.setAttribute("class", "msgDiv");
+    
     var outerdiv = document.createElement("div");
     outerdiv.setAttribute("id", idPrefix+"DivOuter");
     outerdiv.setAttribute("class", "overlayOuter transparent");
@@ -25,6 +29,7 @@ function showForm(data, idPrefix)
     formbar.appendChild(closeicon);
     outerdiv.appendChild(formbar);
     outerdiv.appendChild(innerdiv);
+    outerdiv.appendChild(msgdiv);
     document.body.appendChild(outerdiv);
 
     var inputs = document.getElementById(idPrefix+"FormDiv").getElementsByTagName("input"); 
