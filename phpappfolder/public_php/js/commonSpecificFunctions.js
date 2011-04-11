@@ -1,5 +1,11 @@
-function getForm(link)
+function getForm(event)
 {
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else if (window.event) /* for ie */ {
+        window.event.returnValue = false;
+    }
+    link = event.target;
     var idprefix = null;
     var href = link.getAttribute("href");
     if( href.split(/\//).length > 0)

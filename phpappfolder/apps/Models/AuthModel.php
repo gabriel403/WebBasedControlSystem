@@ -30,7 +30,7 @@ class Models_AuthModel {
 
         $username = filter_var($username, FILTER_SANITIZE_STRING,
                 FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
-        if( strlen($email) < 6 || strlen($email) > 64 )
+        if( strlen($username) < 6 || strlen($username) > 64 )
             $error['username'] = "Username not valid or not of correct length. (min 6 chars)";
         else
             $error['username'] = false;
@@ -61,6 +61,26 @@ class Models_AuthModel {
         return array("success" => "Successfully registered!");
     }
 
+    public function loginValidation($username, $password) {
+
+        $username = filter_var($username, FILTER_SANITIZE_STRING,
+                FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+        if( strlen($username) < 6 || strlen($username) > 64 )
+            $error['username'] = "Username not valid or not of correct length. (min 6 chars)";
+        else
+            $error['username'] = false;
+
+        $password = filter_var($password, FILTER_SANITIZE_STRING,
+                FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+        if( strlen($password) < 6 || strlen($password) > 32 )
+            $error['password'] = "Password not of correct length. (min 6 chars)";
+        else
+            $error['password'] = false;
+        if ( count(array_count_values ( $error )) > 0 )
+            return $error;
+        return array("success" => "Successfully registered!");
+        
+    }
 }
 
 ?>

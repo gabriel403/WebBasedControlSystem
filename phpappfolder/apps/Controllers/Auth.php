@@ -8,7 +8,7 @@
 class Controllers_Auth extends Autonomic_Controller {
 
     public function RegistrationAction() {
-        if (strcasecmp($_SERVER['HTTP_X_REQUESTED_WITH'], "xmlhttprequest") == 0) {
+        if( strcasecmp($_SERVER['HTTP_X_REQUESTED_WITH'], "xmlhttprequest") == 0 ) {
             echo new Forms_RegisterForm();
             exit;
         }
@@ -21,23 +21,29 @@ class Controllers_Auth extends Autonomic_Controller {
         $username = $_POST['username'];
         $password1 = $_POST['password1'];
         $password2 = $_POST['password2'];
-        echo json_encode(Models_AuthModel::registerValidation($name, $email, $username, $password1, $password2));
+        echo json_encode(Models_AuthModel::registerValidation($name, $email,
+                        $username, $password1, $password2));
         exit;
     }
 
-
     public function SigniningAction() {
-        if (strcasecmp($_SERVER['HTTP_X_REQUESTED_WITH'], "xmlhttprequest") == 0) {
+        if( strcasecmp($_SERVER['HTTP_X_REQUESTED_WITH'], "xmlhttprequest") == 0 ) {
             echo new Forms_SigninForm();
             exit;
         }
         $this->_getView()->regForm = new Forms_SigninForm();
     }
-    
+
     public function signinAction() {
-        
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $login = Models_AuthModel::loginValidation($username, $password);
+        if( array_key_exists("success", $login) )
+            Models_SessionModel::setsession();
+        echo json_encode($login);
+        exit;
     }
-    
+
 }
 
 ?>

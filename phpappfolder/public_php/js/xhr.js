@@ -40,7 +40,6 @@ function xhrPost(xhrargs)
             if ( inputs[key].name )
                 data.push(inputs[key].name + "=" + inputs[key].value);
         }
-        data = data.join("&");
     }
     if ( xhrargs.action !== undefined )
         action = xhrargs.action;
@@ -57,6 +56,8 @@ function xhrPost(xhrargs)
         if ( xhrargs.onerror !== undefined )
             xhrargs.onerror("Timeout was reached");
     }, 10000);
+    
+    data = data.join("&");
     xhr.send(data);
     
     xhr.onreadystatechange = function()

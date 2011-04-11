@@ -87,6 +87,7 @@ body {
 }
 
 .msgDiv {
+    padding: 0px 5px 5px 5px;
     font-size: 70%;
     font-family: "Courier New", Courier, monospace;
 }
