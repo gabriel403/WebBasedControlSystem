@@ -8,6 +8,8 @@
 class Models_SessionModel {
 
     public function checksession() {
+        var_dump("DOOOOOOOM");
+        exit;
         if( array_key_exists("wbcsauth", $_COOKIE) && $_COOKIE['wbcsauth'] == session_id() )
             return true;
         return false;
