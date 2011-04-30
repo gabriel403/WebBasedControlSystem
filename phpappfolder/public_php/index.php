@@ -35,6 +35,6 @@ set_include_path(
         )
 );
 require_once 'Autonomic' . DIRECTORY_SEPARATOR . 'Bootstrap.php';
-$ab = new Autonomic_Bootstrap();
+$ab = Autonomic_Bootstrap::getInstance();
 $ab->run();
 

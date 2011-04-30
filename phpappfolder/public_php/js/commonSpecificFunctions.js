@@ -59,14 +59,11 @@ function processFormSubmittion(data)
     }
     if ( errors > 0 )
     {
-        console.log(errors);
         var divs = document.getElementsByTagName("div");
-        console.log(divs);
         for ( var x in divs )
         {
             if ( divs[x] && divs[x].getAttribute && divs[x].getAttribute("class") && divs[x].getAttribute("class") == "msgDiv" )
             {
-                console.log(divs[x]);
                 divs[x].innerHTML = firsterror+"<br /> + "+errors+" more errors.";
             }
         }

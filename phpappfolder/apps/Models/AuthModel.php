@@ -56,8 +56,10 @@ class Models_AuthModel {
             $error['password1'] = "Passwords do not match!";
             $error['password2'] = "Passwords do not match!";
         }
+        
         if ( count(array_count_values ( $error )) > 0 )
             return $error;
+        
         return array("success" => "Successfully registered!");
     }
 
@@ -76,8 +78,10 @@ class Models_AuthModel {
             $error['password'] = "Password not of correct length. (min 6 chars)";
         else
             $error['password'] = false;
+        
         if ( count(array_count_values ( $error )) > 0 )
             return $error;
+        
         return array("success" => "Successfully registered!");
         
     }
