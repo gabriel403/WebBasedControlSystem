@@ -19,7 +19,7 @@ defined('APP_ENV')
                 (getenv('APP_ENV') ? getenv('APP_ENV') : 'production'));
 
 if( APP_ENV != "production" ) {
-    ini_set('display_errors', 1);
+    ini_set('display_errors', -1);
     ini_set('display_startup_errors', 1);
 }
 
@@ -34,6 +34,7 @@ set_include_path(
                 )
         )
 );
+
 require_once 'Autonomic' . DIRECTORY_SEPARATOR . 'Bootstrap.php';
 $ab = Autonomic_Bootstrap::getInstance();
 $ab->run();

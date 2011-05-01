@@ -14,7 +14,7 @@ class Forms_SigninForm {
 
     function __toString() {
         $str = <<<EOD
-<form action='auth/signin' id='signin' method='post' accept-charset='UTF-8'>
+<form action='/p07224405/auth/signin' id='signin' method='post' accept-charset='UTF-8'>
     <fieldset >
         <legend>Signin</legend>
         

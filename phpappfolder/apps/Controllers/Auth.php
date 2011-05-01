@@ -19,10 +19,14 @@ class Controllers_Auth extends Autonomic_Controller {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $username = $_POST['username'];
+        $phonenumber = $_POST['phonenumber'];
         $password1 = $_POST['password1'];
         $password2 = $_POST['password2'];
-        echo json_encode(Models_AuthModel::registerValidation($name, $email,
-                        $username, $password1, $password2));
+	$register = Models_AuthModel::registerValidation($name, $email,
+                        $username, $phonenumber, $password1, $password2);
+        if( array_key_exists("success", $register) )
+            Models_SessionModel::setsession();
+        echo json_encode($register);
         exit;
     }
 
@@ -38,10 +42,12 @@ class Controllers_Auth extends Autonomic_Controller {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $login = Models_AuthModel::loginValidation($username, $password);
-        if( array_key_exists("success", $login) )
-            Models_SessionModel::setsession();
         echo json_encode($login);
         exit;
+    }
+    
+    public function LogoutAction() {
+	    Models_SessionModel::destroysession();
     }
 
 }

@@ -91,3 +91,21 @@ body {
     font-size: 70%;
     font-family: "Courier New", Courier, monospace;
 }
+.statusgroup {
+	height: 25px;
+}
+.statusElement {
+	width: 70px;
+	float: left;
+}
+
+#soapyDiv {
+	margin: 50px auto;
+}
+
+.fakebutton {
+	cursor: pointer;
+	width: 98px;
+	border: 1px white solid;
+	background-color: cornflowerblue;
+}

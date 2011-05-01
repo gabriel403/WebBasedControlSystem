@@ -1,0 +1,54 @@
+<div id="soapyDiv">
+	<div id="statusHeaders">
+		<div class="statusElement" style="width:100px;">Source</div>
+		<div class="statusElement" style="width:200px;">Date Time</div>
+		<div class="statusElement">Switch 1</div>
+		<div class="statusElement">Switch 2</div>
+		<div class="statusElement">Switch 3</div>
+		<div class="statusElement">Switch 4</div>
+		<div class="statusElement">Heater</div>
+		<div class="statusElement">Motor</div>
+		<div class="statusElement">Temp</div>
+		<div class="statusElement">Yours</div>
+		<div class="statusElement">DB Status</div>
+		<div class="statusElement" style="width:100px;">Email Status</div>
+		<br stlye="clear: both;" />
+	</div>
+	<?php
+	$config = Autonomic_Bootstrap::getConfig();
+	$ownmessages = array("False", "True");
+	$motor = array("-1" => "Rvrs", "Off", "Fwd");
+	$preprocessed = array("New", "Stored");
+	$onoff = array("Off", "On");
+	foreach ( $this->messages as $message ) {
+		$message = simplexml_load_string($message);
+		$ownmsg = (int) ($this->phonenumber == $message->sourcemsisdn);
+		$processed = array_key_exists(trim((string) $message->receivedtime),
+			$this->processed);
+		//var_dump($message);
+		$eot = <<<EOT
+		<div class="statusgroup">
+	<div class="statusElement" style="width:100px;">{$message->sourcemsisdn}</div>
+	<div class="statusElement" style="width:200px;">{$message->receivedtime}</div>
+	<div class="statusElement">{$onoff["{$message->message->msg->s1}"]}</div>
+	<div class="statusElement">{$onoff["{$message->message->msg->s2}"]}</div>
+	<div class="statusElement">{$onoff["{$message->message->msg->s3}"]}</div>
+	<div class="statusElement">{$onoff["{$message->message->msg->s4}"]}</div>
+	<div class="statusElement">{$onoff["{$message->message->msg->ht}"]}</div>
+	<div class="statusElement">{$motor["{$message->message->msg->mt}"]}</div>
+	<div class="statusElement">{$message->message->msg->tp}</div>
+	<div class="statusElement">{$ownmessages[$ownmsg]}</div>
+	<div class="statusElement">{$preprocessed[$processed]}</div>
+	<div class="statusElement fakebutton">Click!</div>
+	<br stlye="clear: both;" />
+	</div>
+EOT;
+		echo $eot;
+	}
+	$blu = htmlentities('<msg>s1:0:s2:1:s3:1:s4:0:ht:1:mt:-1:tp:24.30:</msg>');
+	echo "</div><div style='bottom:0px;'>If you wish to send an update manually send an sms to {$config["orangem2m"]["deviceMSISDN"]} in the
+form $blu</div>";
+	?>
+</div>
+<SCRIPT LANGUAGE="JavaScript" SRC="/p07224405/js/soapy.js">
+</SCRIPT>

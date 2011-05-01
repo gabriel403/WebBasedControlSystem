@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <html>
-    <head>
-        <title></title>
-        <link rel="stylesheet" type="text/css" href="/css/layout.css" />
-    </head>
-    <body>
-        <div id="topTitle" class="transparent menuItem">CTEC3609:<br />Telematics and Web-Based Control Systems</div>
-        <div id="topMenu" class="transparent menuItem">
-            <div class="menuItem"><a id="registerLink" href="auth/registration">Register</a></div>
-            <div class="menuItem"><a href="auth/signining">Login</a></div>
-            <div class="menuItem">About</div>
-            <br style="clear: both;" />
-        </div>
-        <br style="clear: both;" />
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/p07224405/css/layout.css" />
+	</head>
+	<body>
+		<div id="topTitle" class="transparent menuItem">CTEC3609:<br />Telematics and Web-Based Control Systems</div>
+		<div id="topMenu" class="transparent menuItem">
+			<?php
+			if ( !Models_SessionModel::checksession() ) {
+				?>
+				<div class="menuItem"><a id="registerLink" href="/p07224405/auth/registration" class="formlink">Register</a></div>
+				<div class="menuItem"><a href="/p07224405/auth/signining" class="formlink">Login</a></div>
+			<?php } else { ?>
+				<div class="menuItem"><a href="/p07224405/soapy">Remote Status</a></div>
+				<div class="menuItem"><a href="/p07224405/auth/logout">Log Out</a></div>
+			<?php } ?>
+			<div class="menuItem">About</div>
+			<br style="clear: both;" />
+		</div>
+		<br style="clear: both;" />
+		<div id="welcomemessage" class="transparent" style="margin-right: 0px;">
+			<?php
+			if ( Models_SessionModel::checksession() ) {
+				echo "Welcome {$_SESSION['logged_user_name']}";
+			}
+			?>
 
+		</div>
