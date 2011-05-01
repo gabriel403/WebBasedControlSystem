@@ -1,3 +1,0 @@
-[submodule "phpappfolder/includes/Autonomic"]
-	path = phpappfolder/includes/Autonomic
-	url = git://github.com/gabriel403/AutonomicFramework.git
