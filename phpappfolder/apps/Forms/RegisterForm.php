@@ -9,7 +9,7 @@ class Forms_RegisterForm {
     function __toString() {
         $str = <<<EOD
        <img src="/p07224405/images/help_icon.png" title="The email address should be the one you wish to recieve alerts to.\nThe phonenumber should be the one that is sending the status information to the M2M server and should be in the in the international form '4407893423563'." />
-<form action='/p07224405/auth/register' id='register' name='register' method='post' accept-charset='UTF-8'>
+<form action='/p07224405/index.php/auth/register' id='register' name='register' method='post' accept-charset='UTF-8'>
     <fieldset >
         <legend>Register</legend>
         <label for='name' >Your Full Name*: </label><br />

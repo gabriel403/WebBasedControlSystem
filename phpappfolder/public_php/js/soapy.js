@@ -34,7 +34,7 @@ function sendemail(e) {
 	var newone = [];
 	newone.push("data="+sendarray.join(", "));
 	xhrPost({
-		action:"/p07224405/soapy/email/",
+		action:"/p07224405/index.php/soapy/email/",
 		data: newone,
 		handleAs: "json",
 		onload: emailSent
