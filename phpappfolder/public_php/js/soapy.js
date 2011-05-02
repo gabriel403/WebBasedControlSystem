@@ -43,8 +43,8 @@ function sendemail(e) {
 	//		
 }
 
-function emailSent() {
-
+function emailSent(data) {
+	console.log(data);
 }
 
 function findthedaddy(element) {

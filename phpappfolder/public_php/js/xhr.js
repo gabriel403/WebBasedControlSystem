@@ -63,7 +63,6 @@ function xhrPost(xhrargs)
     
 	if ( isArray(data) )
 		data = data.join("&");
-	console.log(data);
 	xhr.send(data);
     
 	xhr.onreadystatechange = function()
