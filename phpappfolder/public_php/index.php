@@ -6,7 +6,7 @@ defined('ROOT_PATH')
                 realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..'));
 
 defined('ROOT_URI')
-        || define('ROOT_URI', 'p07224405/');
+        || define('ROOT_URI', 'p07224405/index.php/');
 
 // Define path to application directory
 defined('APP_PATH')
