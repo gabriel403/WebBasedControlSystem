@@ -45,7 +45,7 @@ function sendemail(e) {
 
 function emailSent(data) {
 	if ( false == data )
-		alert("There was a problems sending your email. Probably due to no mail server ebing installed.");
+		alert("There was a problems sending your email. Probably due to no mail server being installed.");
 }
 
 function findthedaddy(element) {
