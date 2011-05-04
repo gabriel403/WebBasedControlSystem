@@ -87,7 +87,15 @@ class Controllers_Soapy extends Autonomic_Controller {
 			$dbtable->insert(array("ident" => (string) $xml->receivedtime, "soapmsg" => $msg));
 		}
 		
-		$viewray = Models_Soap::viewify($new);
+		
+		$user = new Models_Usertable();
+		$users = $user->select();
+		$users2 = array();
+		foreach ( $users as $value ) {
+			$users2[$value['phonenumber']] = $value;
+		}
+		
+		$viewray = Models_Soap::viewify($new, $users2);
 		echo json_encode($viewray);
 		exit;
 		

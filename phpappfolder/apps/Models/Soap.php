@@ -124,7 +124,7 @@ class Models_Soap {
 		return $new;
 	}
 
-	static function viewify($new) {
+	static function viewify($new, $users) {
 		$eot = array();
 		$motor = array("-1" => "Rvrs", "Off", "Fwd");
 		$preprocessed = array("New", "Stored");
