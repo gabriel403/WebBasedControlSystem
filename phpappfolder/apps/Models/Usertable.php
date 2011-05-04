@@ -41,7 +41,7 @@ class Models_Usertable extends Autonomic_Dbtable {
 	}
 
 	function auth($username, $password) {
-		
+		$config = Autonomic_Bootstrap::getConfig();
 		$wheres[] = array('username', $username);
 		$wheres[] = array('password', hash( 'whirlpool', $config['database']['salt'].$password));
 		return $this->select($wheres);
