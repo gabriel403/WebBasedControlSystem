@@ -68,9 +68,7 @@ class Models_AuthModel {
 				array_count_values($error)) )
 			return $error;
 // TODO: check for duplicates already in the db		
-		$db = new Autonomic_Dbtable();
-		$db->setTable("user");
-		$db->connect();
+		$db = new Models_Usertable();
 		
 		$config = Autonomic_Bootstrap::getConfig();
 

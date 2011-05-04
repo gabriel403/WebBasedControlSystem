@@ -8,6 +8,17 @@ function soapyonload() {
 		}
 	}
 	fadeinmenu();
+	setTimeout(getupdates, 30000);
+}
+
+function getupdates() {
+		xhrPost({
+		action:"/p07224405/index.php/soapy/soapyupdate/",
+		handleAs: json,
+		onload: function(data){
+			console.log(data);
+		}
+	});
 }
 
 function sendemail(e) {

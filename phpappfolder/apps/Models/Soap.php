@@ -116,6 +116,12 @@ class Models_Soap {
 		return $messages;
 	}
 
+	static function removeDupes($stored, $new)
+	{
+		var_dump($stored);
+		var_dump($new);
+	}
+	
 }
 
 ?>

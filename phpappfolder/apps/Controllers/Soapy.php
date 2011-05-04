@@ -67,6 +67,21 @@ class Controllers_Soapy extends Autonomic_Controller {
 		exit;
 	}
 
+	function SoapyupdateAction() {
+		if ( !Autonomic_Helpers_IsXHR::IsXHR() )
+			header ( "Locatin: /p07224405/index.php/soapy/");
+		
+		$dbtable = new Autonomic_Dbtable();
+		$dbtable->setTable("soapy");
+		$dbtable->connect();
+		$processed = $dbtable->select();
+
+		$messages = Models_Soap::fetch();
+		$refinedMsg = Models_Soap::parseMsg($messages);
+		
+		
+	}
+	
 }
 
 ?>
