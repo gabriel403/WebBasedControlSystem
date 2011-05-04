@@ -43,7 +43,7 @@ class Models_Usertable extends Autonomic_Dbtable {
 	function auth($username, $password) {
 		
 		$wheres[] = array('username', $username);
-		$wheres[] = array('password', $password);
+		$wheres[] = array('password', hash( 'whirlpool', $config['database']['salt'].$password1));
 		return $this->select($wheres);
 	}
 	

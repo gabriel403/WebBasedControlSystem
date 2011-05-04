@@ -71,12 +71,14 @@ class Models_AuthModel {
 		$db = new Autonomic_Dbtable();
 		$db->setTable("user");
 		$db->connect();
+		
+		$config = Autonomic_Bootstrap::getConfig();
 
 		$keyVals = array();
 		$keyVals['name'] = $name;
 		$keyVals['email'] = $email;
 		$keyVals['username'] = $username;
-		$keyVals['password'] = $password1;
+		$keyVals['password'] = hash( 'whirlpool', $config['database']['salt'].$password1);
 		$keyVals['phonenumber'] = $phonenumber;
 
 

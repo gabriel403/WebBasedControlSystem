@@ -17,7 +17,7 @@ CREATE TABLE  `user` (
 `name` VARCHAR( 64 ) NOT NULL ,
 `email` VARCHAR( 64 ) NOT NULL ,
 `username` VARCHAR( 64 ) NOT NULL ,
-`password` VARCHAR( 32 ) NOT NULL ,
+`password` VARCHAR( 128 ) NOT NULL ,
 `phonenumber` VARCHAR( 16 ) NOT NULL ,
 PRIMARY KEY (  `id` )
 ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;
