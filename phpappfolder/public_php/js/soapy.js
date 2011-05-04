@@ -18,6 +18,7 @@ function getupdates() {
 		onload: function(data){
 			for ( var i = 0; i < data.length; i++ )
 				document.getElementById("soapyDiv").innerHTML += data[i];
+			setTimeout(getupdates, 30000);
 		}
 	});
 }
