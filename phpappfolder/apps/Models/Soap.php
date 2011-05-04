@@ -14,7 +14,7 @@ class Models_Soap {
 	private static $deviceMSISDN;
 
 	public static function getInstance() {
-		if ( !self::$soapmodel ) {
+		if (!self::$soapmodel) {
 			self::$soapmodel = new Models_Soap();
 		}
 
@@ -32,14 +32,12 @@ class Models_Soap {
 
 	static function fetch() {
 		self::getInstance();
-		return self::$soapclient->peekMessages(self::$username, self::$password, 100,
-			"", "");
+		return self::$soapclient->peekMessages(self::$username, self::$password, 100, "", "");
 	}
 
 	static function sendMsg($msg) {
 		self::getInstance();
-		return self::$soapclient->sendMessage(self::$username, self::$password,
-			self::$deviceMSISDN, htmlentities($msg), false, "SMS");
+		return self::$soapclient->sendMessage(self::$username, self::$password, self::$deviceMSISDN, htmlentities($msg), false, "SMS");
 	}
 
 	static function parseMsg($messages) {
@@ -63,27 +61,26 @@ class Models_Soap {
 		 */
 		$newray = array();
 		$returnray = array();
-		foreach ( $messages as $key => $message ) {
+		foreach ($messages as $key => $message) {
 			$sxml = @simplexml_load_string(html_entity_decode($message));
-			if ( !$sxml ) {
+			if (!$sxml) {
 				unset($messages[$key]);
 				continue;
 			}
 			$message = $sxml->message->msg;
 			$explode = explode(":", $message);
-			if ( count($explode) == 1 ) {
+			if (count($explode) == 1) {
 				unset($messages[$key]);
 				continue;
 			}
 
 			$newray = array();
-			for ( $i = 0; $i < count($explode); $i +=2 ) {
-				if ( strlen(trim($explode[$i])) > 0 )
+			for ($i = 0; $i < count($explode); $i +=2) {
+				if (strlen(trim($explode[$i])) > 0)
 					$newray[$explode[$i]] = $explode[$i + 1];
 			}
 			//$xml = new SimpleXMLElement("<msg></msg>");
-			$f = create_function('$f,$c,$a',
-				' 
+			$f = create_function('$f,$c,$a', ' 
             foreach($a as $k=>$v) { 
                 if(is_array($v)) { 
                     $ch=$c->addChild($k); 
@@ -108,17 +105,17 @@ class Models_Soap {
 
 	static function restrictToUser($messages, $phonenumber) {
 
-		foreach ( $messages as $key => $message ) {
+		foreach ($messages as $key => $message) {
 			$sxml = simplexml_load_string(html_entity_decode($message));
-			if ( strcasecmp($sxml->sourcemsisdn, $phonenumber) )
+			if (strcasecmp($sxml->sourcemsisdn, $phonenumber))
 				unset($messages[$key]);
 		}
 		return $messages;
 	}
 
 	static function removeDupes($stored, $new) {
-		foreach ( $stored as $value ) {
-			if ( array_key_exists($value["ident"], $new) )
+		foreach ($stored as $value) {
+			if (array_key_exists($value["ident"], $new))
 				unset($new[$value["ident"]]);
 		}
 		return $new;
@@ -129,12 +126,12 @@ class Models_Soap {
 		$motor = array("-1" => "Rvrs", "Off", "Fwd");
 		$preprocessed = array("New", "Stored");
 		$onoff = array("Off", "On");
-		foreach ( $new as $value ) {
+		foreach ($new as $value) {
 
 			$message = simplexml_load_string($value);
 			$username = "";
-			if ( array_key_exists((string) $message->sourcemsisdn, $users) ) {
-				if ( is_string($users[(string) $message->sourcemsisdn]) )
+			if (array_key_exists((string) $message->sourcemsisdn, $users)) {
+				if (is_string($users[(string) $message->sourcemsisdn]))
 					$username = $users[(string) $message->sourcemsisdn];
 				else
 					$username = $users[(string) $message->sourcemsisdn]['username'];
@@ -160,8 +157,8 @@ class Models_Soap {
 		<br style="clear: both;" />
 	</div>
 EOT;
-			return $eot;
 		}
+		return $eot;
 	}
 
 }
