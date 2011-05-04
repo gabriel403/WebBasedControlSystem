@@ -21,7 +21,7 @@
 	$onoff = array("Off", "On");
 	foreach ( $this->messages as $message ) {
 		$message = simplexml_load_string($message);
-		$username = array_key_exists($message->sourcemsisdn, $this->users) ? $this->users['$message->sourcemsisdn']['username'] : "NotRegged";
+		$username = array_key_exists((string)$message->sourcemsisdn, $this->users) ? $this->users[$message->sourcemsisdn]['username'] : "NotRegged";
 		$processed = array_key_exists(trim((string) $message->receivedtime),
 			$this->processed);
 		//var_dump($message);
