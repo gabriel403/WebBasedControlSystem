@@ -14,7 +14,7 @@ function soapyonload() {
 function getupdates() {
 		xhrPost({
 		action:"/p07224405/index.php/soapy/soapyupdate/",
-		handleAs: json,
+		handleAs: "json",
 		onload: function(data){
 			console.log(data);
 		}
