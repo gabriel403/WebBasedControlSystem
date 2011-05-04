@@ -1,6 +1,6 @@
 CREATE DATABASE  `p07224405db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-CREATE USER 'p07224405_web'@'mysql.t10.tech.dmu.ac.uk' IDENTIFIED BY  'imbUe+97';
-GRANT SELECT , INSERT , UPDATE , DELETE ON  `p07224405db` . * TO  'p07224405_web'@'mysql.t10.tech.dmu.ac.uk';
+CREATE USER 'p07224405'@'mysql.t10.tech.dmu.ac.uk' IDENTIFIED BY  'igReet=73';
+GRANT SELECT , INSERT , UPDATE , DELETE ON  `p07224405db` . * TO  'p07224405'@'mysql.t10.tech.dmu.ac.uk';
 
 
 CREATE TABLE `soapy` (

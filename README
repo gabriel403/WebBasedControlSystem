@@ -1,0 +1,13 @@
+Go to http://php.t10.tech.dmu.ac.uk:6789/p07224405/index.php and follow the directions.
+You will be asked to register before you can continue.
+Once registered/logged in you will be able to see the remote status by clicking
+ the appropriate link in the menu system at the top.
+Should all be fairly self explanatory.
+
+When registering the phone number you are asked for is the number of the board/mobile
+ that will sending smses to the M2M Server.
+
+When viewing the Remote Status page, clicking the email button will send the status
+ of that line in an email (provided there is an email server, which last time
+ I checked there was not) to the address you registered with.
+
