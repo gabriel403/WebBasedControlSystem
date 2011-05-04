@@ -132,6 +132,16 @@ class Models_Soap {
 		foreach ( $new as $value ) {
 
 			$message = simplexml_load_string($value);
+			$username = "";
+			if ( array_key_exists((string) $message->sourcemsisdn, $users) ) {
+				if ( is_string($users[(string) $message->sourcemsisdn]) )
+					$username = $users[(string) $message->sourcemsisdn];
+				else
+					$username = $users[(string) $message->sourcemsisdn]['username'];
+			}
+			else
+				$username = "Not Regd";
+
 			$eot[] = <<<EOT
        
 	<div class="statusgroup">
