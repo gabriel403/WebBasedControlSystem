@@ -77,10 +77,12 @@ EOT;
 			echo $eot;
 		}
 	}
+	?>
+</div>
+<?php
 	$blu = htmlentities('<msg>s1:0:s2:1:s3:1:s4:0:ht:1:mt:-1:tp:24.30:</msg>');
 	echo "<div style='bottom:0px;'>If you wish to send an update manually send an sms to {$config["orangem2m"]["deviceMSISDN"]} in the
 form $blu</div>";
-	?>
-</div>
+?>
 <script type="text/javascript" src="/p07224405/js/soapy.js">
 </script>
