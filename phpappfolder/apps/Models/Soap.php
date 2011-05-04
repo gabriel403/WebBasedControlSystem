@@ -118,8 +118,11 @@ class Models_Soap {
 
 	static function removeDupes($stored, $new)
 	{
-		var_dump($stored);
-		var_dump($new);
+		foreach ( $stored as $value ) {
+			if ( array_key_exists($value["ident"], $new) )
+				unset($new[$value["ident"]]);
+		}
+		return $new;
 	}
 	
 }
