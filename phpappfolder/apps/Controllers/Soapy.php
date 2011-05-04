@@ -82,7 +82,7 @@ class Controllers_Soapy extends Autonomic_Controller {
 		$new = array();
 		$new = Models_Soap::removeDupes($processed, $refinedMsg);
 		$viewray = Models_Soap::viewify($new);
-		var_dump($new);
+		var_dump($viewray);
 		exit;
 		
 		
