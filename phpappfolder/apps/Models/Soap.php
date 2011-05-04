@@ -65,7 +65,7 @@ class Models_Soap {
 		$returnray = array();
 		foreach ( $messages as $key => $message ) {
 			$sxml = @simplexml_load_string(html_entity_decode($message));
-			if (!$sxml) {
+			if ( !$sxml ) {
 				unset($messages[$key]);
 				continue;
 			}
@@ -98,7 +98,7 @@ class Models_Soap {
 			//$sxml->message->msg = $xml->asXML();
 			//echo "<br /><br />";
 			//var_dump(simplexml_load_string(html_entity_decode($sxml->message->msg)));
-			$returnray[trim((string)$sxml->receivedtime)] = $sxml->asXML();
+			$returnray[trim((string) $sxml->receivedtime)] = $sxml->asXML();
 			//exit;
 		}
 
@@ -116,15 +116,41 @@ class Models_Soap {
 		return $messages;
 	}
 
-	static function removeDupes($stored, $new)
-	{
+	static function removeDupes($stored, $new) {
 		foreach ( $stored as $value ) {
 			if ( array_key_exists($value["ident"], $new) )
 				unset($new[$value["ident"]]);
 		}
 		return $new;
 	}
-	
+
+	static function viewify($new) {
+		$eot = array();
+		foreach ( $new as $value ) {
+
+			$message = simplexml_load_string($value);
+			$eot[] = <<<EOT
+       
+	<div class="statusgroup">
+		<div class="statusElement" style="width:100px;">{$message->sourcemsisdn}</div>
+		<div class="statusElement" style="width:200px;">{$message->receivedtime}</div>
+		<div class="statusElement">{$onoff["{$message->message->msg->s1}"]}</div>
+		<div class="statusElement">{$onoff["{$message->message->msg->s2}"]}</div>
+		<div class="statusElement">{$onoff["{$message->message->msg->s3}"]}</div>
+		<div class="statusElement">{$onoff["{$message->message->msg->s4}"]}</div>
+		<div class="statusElement">{$onoff["{$message->message->msg->ht}"]}</div>
+		<div class="statusElement">{$motor["{$message->message->msg->mt}"]}</div>
+		<div class="statusElement">{$message->message->msg->tp}</div>
+		<div class="statusElement">{$username}</div>
+		<div class="statusElement">{$preprocessed[$processed]}</div>
+		<div class="statusElement fakebutton">Click!</div>
+		<br style="clear: both;" />
+	</div>
+EOT;
+			return $eot;
+		}
+	}
+
 }
 
 ?>
