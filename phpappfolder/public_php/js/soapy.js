@@ -16,7 +16,8 @@ function getupdates() {
 		action:"/p07224405/index.php/soapy/soapyupdate/",
 		handleAs: "json",
 		onload: function(data){
-			console.log(data);
+			for ( var i = 0; i < data.length; i++ )
+				document.getElementById("soapyDiv").innerHTML += data[i];
 		}
 	});
 }
