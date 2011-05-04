@@ -79,6 +79,9 @@ class Controllers_Soapy extends Autonomic_Controller {
 		$messages = Models_Soap::fetch();
 		$refinedMsg = Models_Soap::parseMsg($messages);
 		
+		Models_Soap::removeDupes($processed, $refinedMsg);
+		exit;
+		
 		
 	}
 	
