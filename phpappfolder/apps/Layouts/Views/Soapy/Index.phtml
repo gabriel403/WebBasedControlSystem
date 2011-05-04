@@ -28,7 +28,8 @@
 	$onoff = array("Off", "On");
 	foreach ( $this->messages as $message ) {
 		$message = simplexml_load_string($message);
-		$username = array_key_exists((string) $message->sourcemsisdn, $this->users) ? $this->users[(string) $message->sourcemsisdn]['username'] : "Not Regd";
+		$username = array_key_exists((string) $message->sourcemsisdn, $this->users) && is_array($this->users[(string) $message->sourcemsisdn]) ? $this->users[(string) $message->sourcemsisdn]['username'] : "Not Regd";
+		$username = array_key_exists((string) $message->sourcemsisdn, $this->users) && !is_array($this->users[(string) $message->sourcemsisdn]) ? $this->users[(string) $message->sourcemsisdn] : "Not Regd";
 		$processed = array_key_exists(trim((string) $message->receivedtime),
 			$this->processed);
 		//var_dump($message);
@@ -50,10 +51,10 @@
 	</div>
 EOT;
 		echo $eot;
-		if ( array_key_exists((string) $message->sourcemsisdn, $this->users) && $this->users[(string) $message->sourcemsisdn] ) {
+		if ( array_key_exists((string) $message->sourcemsisdn, $this->users) && is_array($this->users[(string) $message->sourcemsisdn]) ) {
 			$user = $this->users[(string) $message->sourcemsisdn];
 			$users = $this->users;
-			$users[(string) $message->sourcemsisdn] = false;;
+			$users[(string) $message->sourcemsisdn] = $this->users[(string) $message->sourcemsisdn]['username'];;
 			$this->users = $users;
 			$eot = <<<EOT
 	<div>
