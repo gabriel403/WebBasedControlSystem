@@ -14,6 +14,13 @@
 		<div class="statusElement" style="width:100px;">Email Status</div>
 		<br stlye="clear: both;" />
 	</div>
+		<div>
+		       	<div class="statusElement" style="width:100px;">Username</div>
+			<div class="statusElement" style="width:400px;">Email</div>
+			<div class="statusElement" style="width:200px;">Registered Number</div>
+			<div class="statusElement" style="width:200px;">Full Name</div>
+			<br stlye="clear: both;" />
+		</div>
 	<?php
 	$config = Autonomic_Bootstrap::getConfig();
 	$motor = array("-1" => "Rvrs", "Off", "Fwd");
@@ -45,20 +52,18 @@ EOT;
 		echo $eot;
 		if ( array_key_exists((string) $message->sourcemsisdn, $this->users) ) {
 			$user = $this->users[(string) $message->sourcemsisdn];
+			$users = $this->users;
+			unset($users[(string) $message->sourcemsisdn]);
+			$this->users = $users;
 			$eot = <<<EOT
 	<div>
-	       	<div class="statusElement" style="width:100px;">Username</div>
-		<div class="statusElement" style="width:400px;">Email</div>
-		<div class="statusElement" style="width:200px;">Registered Number</div>
-		<div class="statusElement" style="width:200px;">Full Name</div>
-		<br stlye="clear: both;" />
-	</div>
-	<div>
-	       	<div class="statusElement" style="width:100px;">{$user['username']}</div>
-		<div class="statusElement" style="width:400px;">{$user['email']}</div>
-		<div class="statusElement" style="width:200px;">{$user['phonenumber']}</div>
-		<div class="statusElement" style="width:200px;">{$user['name']}</div>
-		<br stlye="clear: both;" />
+		<div>
+		       	<div class="statusElement" style="width:100px;">{$user['username']}</div>
+			<div class="statusElement" style="width:400px;">{$user['email']}</div>
+			<div class="statusElement" style="width:200px;">{$user['phonenumber']}</div>
+			<div class="statusElement" style="width:200px;">{$user['name']}</div>
+			<br stlye="clear: both;" />
+		</div>
 	</div>
 EOT;
 			echo $eot;
