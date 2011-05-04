@@ -126,6 +126,9 @@ class Models_Soap {
 
 	static function viewify($new) {
 		$eot = array();
+		$motor = array("-1" => "Rvrs", "Off", "Fwd");
+		$preprocessed = array("New", "Stored");
+		$onoff = array("Off", "On");
 		foreach ( $new as $value ) {
 
 			$message = simplexml_load_string($value);
@@ -142,7 +145,7 @@ class Models_Soap {
 		<div class="statusElement">{$motor["{$message->message->msg->mt}"]}</div>
 		<div class="statusElement">{$message->message->msg->tp}</div>
 		<div class="statusElement">{$username}</div>
-		<div class="statusElement">{$preprocessed[$processed]}</div>
+		<div class="statusElement">{$preprocessed[0]}</div>
 		<div class="statusElement fakebutton">Click!</div>
 		<br style="clear: both;" />
 	</div>

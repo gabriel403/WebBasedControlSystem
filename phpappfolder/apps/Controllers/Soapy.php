@@ -81,8 +81,14 @@ class Controllers_Soapy extends Autonomic_Controller {
 		
 		$new = array();
 		$new = Models_Soap::removeDupes($processed, $refinedMsg);
+
+		foreach ( $new as $msg ) {
+			$xml = simplexml_load_string($msg);
+			$dbtable->insert(array("ident" => (string) $xml->receivedtime, "soapmsg" => $msg));
+		}
+		
 		$viewray = Models_Soap::viewify($new);
-		var_dump($viewray);
+		echo json_encode($viewray);
 		exit;
 		
 		
