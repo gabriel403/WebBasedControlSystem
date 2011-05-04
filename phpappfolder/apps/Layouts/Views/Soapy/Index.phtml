@@ -12,14 +12,14 @@
 		<div class="statusElement">Yours</div>
 		<div class="statusElement">DB Status</div>
 		<div class="statusElement" style="width:100px;">Email Status</div>
-		<br stlye="clear: both;" />
+		<div stlye="clear: both;"> </div>
 	</div>
 		<div>
 		       	<div class="statusElement" style="width:100px;">Username</div>
 			<div class="statusElement" style="width:400px;">Email</div>
 			<div class="statusElement" style="width:200px;">Registered Number</div>
 			<div class="statusElement" style="width:200px;">Full Name</div>
-			<br stlye="clear: both;" />
+		<div stlye="clear: both;"> </div>
 		</div>
 	<?php
 	$config = Autonomic_Bootstrap::getConfig();
@@ -55,7 +55,7 @@
 		<div class="statusElement">{$username}</div>
 		<div class="statusElement">{$preprocessed[$processed]}</div>
 		<div class="statusElement fakebutton">Click!</div>
-		<br style="clear: both;" />
+		<div stlye="clear: both;"> </div>
 	</div>
 EOT;
 		echo $eot;
@@ -71,7 +71,7 @@ EOT;
 			<div class="statusElement" style="width:400px;">{$user['email']}</div>
 			<div class="statusElement" style="width:200px;">{$user['phonenumber']}</div>
 			<div class="statusElement" style="width:200px;">{$user['name']}</div>
-			<br stlye="clear: both;" />
+		<div stlye="clear: both;"> </div>
 		</div>
 	</div>
 EOT;
