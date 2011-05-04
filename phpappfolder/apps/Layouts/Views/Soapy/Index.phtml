@@ -14,13 +14,13 @@
 		<div class="statusElement" style="width:100px;">Email Status</div>
 		<br style="clear: both;" />
 	</div>
-		<div>
-		       	<div class="statusElement" style="width:100px;">Username</div>
-			<div class="statusElement" style="width:400px;">Email</div>
-			<div class="statusElement" style="width:200px;">Registered Number</div>
-			<div class="statusElement" style="width:200px;">Full Name</div>
-			<br stlye="clear: both;" />
-		</div>
+	<div>
+		<div class="statusElement" style="width:100px;">Username</div>
+		<div class="statusElement" style="width:400px;">Email</div>
+		<div class="statusElement" style="width:200px;">Registered Number</div>
+		<div class="statusElement" style="width:200px;">Full Name</div>
+		<br stlye="clear: both;" />
+	</div>
 	<?php
 	$config = Autonomic_Bootstrap::getConfig();
 	$motor = array("-1" => "Rvrs", "Off", "Fwd");
@@ -29,9 +29,8 @@
 	foreach ( $this->messages as $message ) {
 		$message = simplexml_load_string($message);
 		$username = "";
-		if ( array_key_exists((string) $message->sourcemsisdn, $this->users) )
-		{
-			if (is_string($this->users[(string) $message->sourcemsisdn]))
+		if ( array_key_exists((string) $message->sourcemsisdn, $this->users) ) {
+			if ( is_string($this->users[(string) $message->sourcemsisdn]) )
 				$username = $this->users[(string) $message->sourcemsisdn];
 			else
 				$username = $this->users[(string) $message->sourcemsisdn]['username'];
@@ -62,7 +61,7 @@ EOT;
 		if ( array_key_exists((string) $message->sourcemsisdn, $this->users) && !is_string($this->users[(string) $message->sourcemsisdn]) ) {
 			$user = $this->users[(string) $message->sourcemsisdn];
 			$users = $this->users;
-			$users[(string) $message->sourcemsisdn] = (string)$this->users[(string) $message->sourcemsisdn]['username'];
+			$users[(string) $message->sourcemsisdn] = (string) $this->users[(string) $message->sourcemsisdn]['username'];
 			$this->users = $users;
 			$eot = <<<EOT
 	<div>

@@ -6,26 +6,27 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
-		<div id="topTitle" class="transparent menuItem">CTEC3609:<br />Telematics and Web-Based Control Systems</div>
-		<div id="topMenu" class="transparent menuItem">
-			<?php
-			if ( !Models_SessionModel::checksession() ) {
-				?>
-				<div class="menuItem"><a id="registerLink" href="/p07224405/index.php/auth/registration" class="formlink">Register</a></div>
-				<div class="menuItem"><a href="/p07224405/index.php/auth/signining" class="formlink">Login</a></div>
-			<?php } else { ?>
-				<div class="menuItem"><a href="/p07224405/index.php/soapy">Remote Status</a></div>
-				<div class="menuItem"><a href="/p07224405/index.php/auth/logout">Log Out</a></div>
-			<?php } ?>
-			<div class="menuItem">About</div>
+		<div>
+			<div id="topTitle" class="transparent menuItem">CTEC3609:<br />Telematics and Web-Based Control Systems</div>
+			<div id="topMenu" class="transparent menuItem">
+				<?php
+				if ( !Models_SessionModel::checksession() ) {
+					?>
+					<div class="menuItem"><a id="registerLink" href="/p07224405/index.php/auth/registration" class="formlink">Register</a></div>
+					<div class="menuItem"><a href="/p07224405/index.php/auth/signining" class="formlink">Login</a></div>
+				<?php } else { ?>
+					<div class="menuItem"><a href="/p07224405/index.php/soapy">Remote Status</a></div>
+					<div class="menuItem"><a href="/p07224405/index.php/auth/logout">Log Out</a></div>
+				<?php } ?>
+				<div class="menuItem">About</div>
+				<br style="clear: both;" />
+			</div>
 			<br style="clear: both;" />
-		</div>
-		<br style="clear: both;" />
-		<div id="welcomemessage" class="transparent" style="margin-right: 0px;">
-			<?php
-			if ( Models_SessionModel::checksession() ) {
-				echo "Welcome {$_SESSION['logged_user_name']}";
-			}
-			?>
+			<div id="welcomemessage" class="transparent" style="margin-right: 0px;">
+				<?php
+				if ( Models_SessionModel::checksession() ) {
+					echo "Welcome {$_SESSION['logged_user_name']}";
+				}
+				?>
 
-		</div>
+			</div>
