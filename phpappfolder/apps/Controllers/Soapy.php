@@ -13,6 +13,11 @@ class Controllers_Soapy extends Autonomic_Controller {
 		$dbtable->connect();
 
 		$user = new Models_Usertable();
+		$users = $user->select();
+		$users2 = array();
+		foreach ( $users as $value ) {
+			$users2[$value['phonenumber']] = $value;
+		}
 		$phonenumber = $user->getphone();
 		$phonenumber = $phonenumber[0]['phonenumber'];
 
@@ -27,7 +32,7 @@ class Controllers_Soapy extends Autonomic_Controller {
 		//var_dump($postprocessed);
 		//$refinedMsg = Models_Soap::restrictToUser($refinedMsg, $phonenumber);
 		$this->_getView()->messages = $refinedMsg;
-		$this->_getView()->phonenumber = $phonenumber;
+		$this->_getView()->users = $users2;
 		$this->_getView()->processed = $postprocessed;
 		foreach ( $refinedMsg as $msg ) {
 			$xml = simplexml_load_string($msg);

@@ -16,13 +16,12 @@
 	</div>
 	<?php
 	$config = Autonomic_Bootstrap::getConfig();
-	$ownmessages = array("False", "True");
 	$motor = array("-1" => "Rvrs", "Off", "Fwd");
 	$preprocessed = array("New", "Stored");
 	$onoff = array("Off", "On");
 	foreach ( $this->messages as $message ) {
 		$message = simplexml_load_string($message);
-		$ownmsg = (int) ($this->phonenumber == $message->sourcemsisdn);
+		$username = array_key_exists($message->sourcemsisdn, $this->users) ? $this->users['$message->sourcemsisdn']['username'] : "NotRegged";
 		$processed = array_key_exists(trim((string) $message->receivedtime),
 			$this->processed);
 		//var_dump($message);
@@ -37,7 +36,7 @@
 	<div class="statusElement">{$onoff["{$message->message->msg->ht}"]}</div>
 	<div class="statusElement">{$motor["{$message->message->msg->mt}"]}</div>
 	<div class="statusElement">{$message->message->msg->tp}</div>
-	<div class="statusElement">{$ownmessages[$ownmsg]}</div>
+	<div class="statusElement">{$username}</div>
 	<div class="statusElement">{$preprocessed[$processed]}</div>
 	<div class="statusElement fakebutton">Click!</div>
 	<br stlye="clear: both;" />
